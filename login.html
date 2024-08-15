@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Library Login Form</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background-color: #f5f5f5;
+        }
+        .navbar-custom {
+            background-color: #333;
+            color: #fff;
+        }
+        .navbar-custom .navbar-brand,
+        .navbar-custom .navbar-nav > li > a {
+            color: #f0ad4e;
+        }
+        .navbar-custom .navbar-nav > li > a:hover {
+            color: #000;
+        }
+        .navbar {
+            border-radius: 0px !important;
+        }
+        .footer {
+            background-color: #333;
+            color: #f0ad4e;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+        }
+        span {
+            color: red;
+        }
+        .star, .fail{
+            color: red;
+        }
+        .success {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-custom">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="home.html">Test-Library</a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="register.html">Register</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="root" class="container">
+        <form class="well form-horizontal" action="dashboard.html" method="" id="login_form">
+            <fieldset>
+                <legend>Login</legend>
+                <div class="form-group">
+                    <label class="col-md-4 control-label"><span class="star">* </span>E-Mail</label>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                            <input name="email" id="email" maxlength="30" placeholder="E-Mail" class="form-control" type="email">
+                        </div>
+                        <span id="emailError" class="error"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label"><span class="star">* </span>Password</label>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                            <input name="password" id="password" maxlength="16" placeholder="**********" class="form-control" type="password">
+                        </div>
+                        <span id="passwordError" class="error"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-4 col-md-4">
+                        <div class="checkbox">
+                            <label><input type="checkbox" name="remember" id="remember"> Remember Me</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-4 col-md-4">
+                        <a href="forgot_password.html">Forgot My Password</a>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label"></label>
+                    <div class="col-md-4">
+                        <button type="submit" id="btn-login" class="btn btn-success login-button" disabled="disabled">Login</button>
+                        <button type="button" class="btn btn-default" id="cancelButton">Cancel</button>
+                    </div>
+                    <span id="successMessage" class="success"></span>
+                    <span id="failMessage" class="fail"></span>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-4 col-md-4">
+                        <p>Not a member? <a href="register.html">Sign up here</a></p>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Test-Library. All rights reserved. UvA</p>
+        </div>
+    </footer>
+
+    <script>
+       $(document).ready(function () {
+    let loginAttempts = 0;
+    const maxAttempts = 3;
+
+    // Function to validate email
+    function isValidEmail(email) {
+        const emailRegex = /\S+@\S+\.\S+/;
+        return emailRegex.test(email);
+    }
+
+    function isValidPassword(password) {
+        const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+|~=?{}\[\]:;,./])[A-Za-z\d!@#$%^&*()_+|~=?{}\[\]:;,./]{8,16}$/;
+        return passwordRegex.test(password);
+    }
+
+    function validateEmail() {
+        const email = $('#email').val().trim();
+        if (email === '') {
+            $('#emailError').text('Email is required');
+            return false;
+        } else if (!isValidEmail(email)) {
+            $('#emailError').text('Please enter a valid email address');
+            return false;
+        } else {
+            $('#emailError').text('');
+            return true;
+        }
+    }
+
+    function validatePassword() {
+        const password = $('#password').val().trim();
+        if (password === '') {
+            $('#passwordError').text('Password is required');
+            return false;
+        } else {
+            $('#passwordError').text('');
+            return true;
+        }
+    }
+    function wrongInput() {
+        const emailErrMsg = $('#emailError').text();
+        return emailErrMsg;
+    }
+    function emptyFields() {
+        const email = $('#email').val().trim();
+        const password = $('#password').val().trim();
+        
+        const isEmpty = !email || !password;
+        
+        return isEmpty;
+    }
+
+    function validateForm() {
+        const isEmailValid = validateEmail();
+        const isPasswordValid = validatePassword();
+
+        const isValid = isEmailValid && isPasswordValid;
+        return isValid;
+    }
+
+    // function buttonStatus() {
+    //     const isEmpty = emptyFields();
+    //     if (isEmpty) {// || ($('#emailError').text())){
+    //         $('#btn-login').prop('disabled', true);
+    //     }
+    //     else {
+    //         $('#btn-login').prop('disabled', false);
+    //     }
+    // }
+    function buttonStatus() {
+        // Check if any error messages are displayed
+        const errorMessagesDisplayed = $('#emailError').text();
+        
+        // if (errorMessagesDisplayed || (emptyFields())) {
+        //     // Disable login button
+        //     $('#btn-login').prop('disabled', true);
+        // } else {
+        //     // Enable login button
+        //     $('#btn-login').prop('disabled', false);
+        // }
+        if (!errorMessagesDisplayed && !(emptyFields())){
+            $('#btn-login').prop('disabled', false);
+        }
+        else {
+            $('#btn-login').prop('disabled', true);
+        }
+    }
+    let debounceTimeout;
+
+    function debounce(callback, delay) {
+        return function() {
+            clearTimeout(debounceTimeout);
+            debounceTimeout = setTimeout(callback, delay);
+        };
+    }
+    $('#email').on('input', function() {
+            validateEmail();
+            buttonStatus();
+    });
+    $('#password').on('input', function() {
+        validatePassword();
+        buttonStatus();
+    });
+
+    $('#cancelButton').on('click', function() {
+        if (confirm('Are you sure you want to cancel?')) {
+            window.location.href = 'home.html';
+        }
+    });
+
+    function disableInputs() {
+        $('#email').prop('disabled', true);
+        $('#password').prop('disabled', true);
+        $('#btn-login').prop('disabled', true);
+    }
+
+    $('#login_form').submit(function (event) {
+        event.preventDefault();
+        
+        if (!validateForm()) {
+            buttonStatus();
+        } else {
+            const email = $('#email').val().trim();
+            const password = $('#password').val().trim();
+            const validEmail = "ada@uva.nl";
+            const validPassword = "Pa55w0rd!";
+            // const storedUser = JSON.parse(localStorage.getItem('user'));
+
+            if (email === validEmail) {
+                if (password === validPassword) {
+                    $('#failMessage').text(''); // Clear any previous failure messages
+                    $('#successMessage').text('Login successfully completed');
+                    setTimeout(function () {
+                        window.location.href = "dashboard.html";
+                    }, 2000);
+                } else {
+                    // $('#passwordError').text('Invalid password');
+                    $('#failMessage').text('Invalid email or password.');
+                    loginAttempts++;
+                }
+            } else {
+                $('#failMessage').text('Invalid email or password.');
+                // loginAttempts++;
+            }
+
+            if (loginAttempts >= maxAttempts) {
+                disableInputs();
+                $('#failMessage').text('You reached 3 attempts, try again later.');
+            }
+        }
+    });
+
+});
+    </script>
+</body>
+</html>

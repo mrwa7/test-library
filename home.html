@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Test-Library Home</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background-color: #f5f5f5;
+        }
+        .navbar-custom {
+            background-color: #333;
+            color: #fff;
+        }
+        .navbar-custom .navbar-brand,
+        .navbar-custom .navbar-nav > li > a {
+            color: #f0ad4e;
+        }
+        .navbar-custom .navbar-nav > li > a:hover {
+            color: #000;
+        }
+        .navbar {
+            border-radius: 0px !important;
+            margin-bottom: 0px !important;
+        }
+        .footer {
+            background-color: #333;
+            color: #f0ad4e;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+        }
+        .cover {
+            background-image: url('img/lib.jpg'); 
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-direction: column;
+        }
+        .cover h2 {
+            /* font-size: 3em; */
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .cover p {
+            font-size: 1.5em;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+        .btn-gold {
+            background-color: #f0ad4e;
+            color: #000;
+            border: none;
+        }
+        .btn-gold:hover {
+            background-color: #e99a3e;
+        }
+        .content {
+            padding: 50px 0;
+           
+        }
+        .content .col-md-6 {
+            text-align: center;
+            padding: 20px;
+            height: 200px;
+        }
+        .definition-row {
+            margin-top: 30px;
+        }
+        .definition-row .col-md-6 img {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+        }
+        .definition-row .col-md-6 p {
+            font-size: 1.2em;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-custom">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="home.html">Test-Library</a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="cover">
+        <h2>Welcome to the Test Library</h2>
+        <p>A simple client-side website, built for GUI testing purposes</p>
+    </div>
+
+    <div class="container content">
+        <div class="row">
+            <div class="col-md-6">
+                <h5>Already a member? Login here</h5>
+                <a href="login.html" id="login-member" class="btn btn-lg btn-warning">Login</a>
+            </div>
+            <div class="col-md-6">
+                <h5>New member? Register here</h5>
+                <a href="register.html" id="register-member" class="btn btn-lg btn-warning">Register</a>
+            </div>
+        </div>
+
+        <div class="row definition-row">
+            <div class="col-md-6">
+                <img src="img/usabil.png" alt="Usability Image"> 
+            </div>
+            <div class="col-md-6">
+                <p>
+                    <strong>Usability:</strong> Usability refers to the ease of use and learnability of a human-made object such as a tool or device. Usability metrics include effectiveness, efficiency, and satisfaction with which users achieve specified goals in particular environments.
+                </p>
+            </div>
+        </div>
+
+        <div class="row definition-row">
+            <div class="col-md-6">
+                <p>
+                    <strong>Model-Based Testing:</strong> Model-based testing of GUI applications involves using models to represent the desired behavior of the system under test. These models help in generating test cases that can automatically be executed to verify the functionality of the GUI applications.
+                </p>
+            </div>
+            <div class="col-md-6">
+                <img src="img/compon.png" alt="Model-Based Testing Image"> 
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Test-Library. All rights reserved. UvA</p>
+        </div>
+    </footer>
+
+    <script>
+        $(document).ready(function () {
+        });
+    </script>
+</body>
+</html>

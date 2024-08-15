@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f5f5f5;
+        }
+        .navbar-custom {
+            background-color: #333;
+            color: #fff;
+        }
+        .navbar-custom .navbar-brand,
+        .navbar-custom .navbar-nav > li > a {
+            color: #f0ad4e;
+        }
+        .navbar-custom .navbar-nav > li > a:hover {
+            color: #000;
+        }
+        .navbar {
+            border-radius: 0px !important;
+        }
+        .footer {
+            background-color: #333;
+            color: #f0ad4e;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+        }
+        .dashboard-container {
+            padding: 20px 0 100px;
+        }
+        .welcome-line {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .category {
+            text-align: center;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .thumbnail {
+            margin-bottom: 20px;
+        }
+        .thumbnail img {
+            width: 150px; 
+            height: 150px; 
+            object-fit: cover; 
+            cursor: pointer; 
+        }
+        .thumbnail:hover img {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-custom">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="home.html">Test-Library</a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="home.html">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container dashboard-container">
+        <div class="welcome-line">
+            <h4>Welcome to the Test Library</h4>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <img src="img/undraw_Programmer_re_owql.png" alt="Informatics">
+                    <div class="category">Informatics</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <img src="img/undraw_Scientist_ft0o.png" alt="Testing">
+                    <div class="category">Testing</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <img src="img/compon.png" alt="MBT">
+                    <div class="category">MBT</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <img src="img/usabil.png" alt="Usability">
+                    <div class="category">Usability</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <img src="img/undraw_Design_notes_re_eklr.png" alt="UX/UI">
+                    <div class="category">UX/UI</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <img src="img/undraw_Build_wireframe_re_ln7g.png" alt="HCI">
+                    <div class="category">HCI</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <img src="img/undraw_Code_review_re_woeb.png" alt="Software Engineering">
+                    <div class="category">Software Engineering</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <img src="img/undraw_Building_re_xfcm.png" alt="DSL">
+                    <div class="category">DSL</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <img src="img/undraw_Software_engineer_re_tnjc.png" alt="AML">
+                    <div class="category">AML</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Test-Library. All rights reserved. UvA</p>
+        </div>
+    </footer>
+</body>
+</html>
